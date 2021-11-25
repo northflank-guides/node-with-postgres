@@ -166,11 +166,10 @@ This script will read all entries in the database with a specific name which you
 
 ### Putting it together with a webserver (optional)
 
-As Node.js usually provides a website, this in this section we will explain to wrap our previous examples into a webserver exposing an API with different endpoints to manipulate and read data.
-The webserver will contain three endpoints, one for adding a row `/add?name=<your-name>` (corresponding to `add-data.js`), one for reading a row `/read?name=<your-name>` (similar to `read-data.js`) and one for reading all data.
+As Node.js a app usually provides a HTTP interface of some sort, in this section we will explain how to wrap our previous examples into a web server, exposing an API with different endpoints to manipulate and read data.
+The web server will contain three endpoints, one for adding a row `/add?name=<your-name>` (corresponding to `add-data.js`), one for reading a row `/read?name=<your-name>` (similar to `read-data.js`) and one for reading all data.
 
-It makes use of the Node.js `http` package which is included by default. As this example is slightly more involved, there
-will be detailed comments directly in the code: 
+It makes use of the Node.js `http` package which is installed by default. As this example is slightly more involved, there will be detailed comments directly in the code: 
 
 ```javascript
 const http = require('http');
@@ -243,9 +242,7 @@ async function setupTable(client) { // Function with same functionality as in th
 
 The server can be started with `node index.js`.
 
-Feel free to explore the different endpoints. Try adding new rows with different names and see how the response changes.
-You can also experiment with the code. For example, you can try to add an endpoint which deletes all rows corresponding to a name.
-The postgres [SQL query](https://www.postgresql.org/docs/10/sql-delete.html) here would be: `DELETE FROM my_table WHERE name='<your-name>';`.
+Feel free to explore the different endpoints. Try adding new rows with different names and see how the response changes. You can also experiment with the code - for example, you can try to add an endpoint which deletes all rows corresponding to a specific name. The Postgres [SQL query](https://www.postgresql.org/docs/10/sql-delete.html) for that would be: `DELETE FROM my_table WHERE name='<your-name>';`.
 
 > The `http` package is the most basic package for creating HTTP servers. For more complex applications with many endpoints,
 it is recommended to use a more powerful web framework such as [Express](https://expressjs.com) or [Koa](https://koajs.com/).
@@ -265,9 +262,8 @@ You do not want to upload your secrets and environment variables to source contr
 
 In this how-to guide, we have shown how to use Node.js to connect to a PostgreSQL instance and how to manipulate and read data. 
 
-
 In the first step, a client is instantiated. This client is then used to create a database table and rows are inserted into the table. Then we showed how to read and filter the inserted data.
-In a final step, the database calls are wrapped in a web API to make it possible to access the functionality using HTTP requests. 
+In the final step, the database calls are wrapped in a web API to make it possible to access the functionality using HTTP requests. 
 
 ### <a name="use-northflank"></a>_Using Northflank to connect Node.js to PostgreSQL for free_
 
