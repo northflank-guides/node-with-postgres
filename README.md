@@ -281,4 +281,4 @@ Northflank allows you to spin up a PostgreSQL database and a Node.js service wit
 6. Within your project, create a combined service:
     1. Select your git repository and branch
     2. Select Buildpack as build type
-    3. Add port 3000 as a public port
+    3. Add port 8080 as a public port
